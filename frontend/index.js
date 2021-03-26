@@ -57,7 +57,7 @@ class RoastLevel{
 
 	get index() {
 		index(this, this.template);
-
+		
 		this.autoSelect;
 	};
 

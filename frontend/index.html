@@ -89,8 +89,8 @@
 
         <div class="cell">
           <ul class="no-bullet">
-            {{#each included}}
-              <li><a href="localhost:3000/beans/{{ this.id }}" >{{ this.name }}</a></li>
+            {{#each beans}}
+              <li><a href="localhost:3000/beans/{{ this.id }}" >{{ this.attributes.name }}</a></li>
             {{/each}}
           </ul>
         </div>
