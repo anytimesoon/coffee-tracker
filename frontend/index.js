@@ -38,26 +38,40 @@ class RoastLevels{
 
 		for (let i = 0; i < this.all.length; i++){
 			let opt = document.createElement('option');
-	    opt.value = this.all[i];
+	    opt.value = this.all[i].id;
 	    opt.innerHTML = this.all[i].attributes.name;
 	    formSelect.appendChild(opt);
-		}
+		};
 	};
-}
+};
 
 class RoastLevel{
 	constructor(json){
 		this.template = document.querySelector("#show-roast-level").innerHTML;
 		this.name = json.data.attributes.name
+		this.id = json.data.id
 		this.beans = json.included
 
 		this.index
-	}
+	};
 
 	get index() {
 		index(this, this.template);
-	}
-}
+
+		this.autoSelect;
+	};
+
+	get autoSelect() {
+		const options = document.getElementById("bean-roast-level").options;
+
+		for (let i = 0; i < options.length; i++) {
+			if (this.id === options[i].value){
+				options[i].selected = true;
+				break;
+			};
+		};
+	};
+};
 
 document.addEventListener('DOMContentLoaded', function(){
 	fetch('http://localhost:3000')
