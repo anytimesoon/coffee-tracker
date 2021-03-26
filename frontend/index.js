@@ -34,8 +34,15 @@ class RoastLevels{
 
 class RoastLevel{
 	constructor(json){
-		this.name = json.attributes.name
+		this.template = document.querySelector("#show-roast-level").innerHTML;
+		this.name = json.data.attributes.name
 		this.beans = json.included
+
+		this.index
+	}
+
+	get index() {
+		index(this, this.template);
 	}
 }
 

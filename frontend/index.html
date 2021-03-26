@@ -27,10 +27,36 @@
       </div>
     </div>
 
+    <!-- Modal -->
+
+    <div class="reveal" id="new-bean-form" data-reveal>
+      <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell">
+          <form id="new-bean-form" action="http://localhost:3000/beans" method="POST">
+            <label> Name: <input type="text" name="name" id="bean-name" /></label>
+
+            <label for="bean-roast-level">Roast Level</label>
+            <select id="bean-roast-level" name="bean-roast-level"></select>
+
+            <label> Tasting Notes: <input type="text" name="tasting_notes" id="bean-tasting-notes" /></label>
+
+            <label> Notes: </label>
+            <textarea name="notes" id="bean-notes" rows="10" ></textarea>
+            <input type="submit" id="submit" value="Submit" class="button" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="index.js"></script>
+
+
+    <!-- Templates -->
 
     <script id="roast-levels-index" type="text/x-handlebars-template">
       <div class="grid-x grid-padding-x grid-padding-y">
@@ -42,6 +68,24 @@
             <a href="#" id="{{ id }}" class="show-roast-level button large expanded">{{ attributes.name }}</a>
           </div>
         {{/each}}
+      </div>
+    </script>
+
+    <script id="show-roast-level" type="text/x-handlebars-template">
+      <div class="grid-x grid-padding-x grid-padding-y">
+
+        <div class="cell text-center">
+          <h1>{{ name }} <button class="button" data-open="new-bean-form">Click me for a modal</button></h1>
+        </div>
+
+        <div class="cell">
+          <ul class="no-bullet">
+            {{#each included}}
+              <li><a href="localhost:3000/beans/{{ this.id }}" >{{ this.name }}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+       
       </div>
     </script>
   </body>
