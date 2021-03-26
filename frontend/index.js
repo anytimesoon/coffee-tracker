@@ -79,44 +79,44 @@ document.addEventListener('DOMContentLoaded', function(){
 	    .then(function(response) {	return response.json();  })
 	    .then( function(json) {	const roastLevels = new RoastLevels(json);   })
 	    .catch(err => console.log('Request Failed', err));
+});
 
 
-	// prevent default form action
-	document.getElementById("new-bean-form").addEventListener('submit', function(e){
-			e.preventDefault();
+// prevent default form action
+document.getElementById("new-bean-form").addEventListener('submit', function(e){
+		e.preventDefault();
+		debugger;
+		const data = {  bean: 
+												   {  name: this[0].value,
+															roast_level_id: this[1].value,
+															tasting_notes: this[2].value,
+															score: this[3].value,
+															notes: this[4].value
+														}
+										};
 
-			const data = {  bean: 
-													   {  name: this[0].value,
-																roast_level_id: this[1].value,
-																tasting_notes: this[2].value,
-																score: this[3].value,
-																notes: this[4].value
-															}
+		const configObj = {
+												method: "POST",
+											  headers: {
+											    "Content-Type": "application/json",
+											    "Accept": "application/json"
+											  },
+											  body: JSON.stringify(data)
 											};
 
-			const configObj = {
-													method: "POST",
-												  headers: {
-												    "Content-Type": "application/json",
-												    "Accept": "application/json"
-												  },
-												  body: JSON.stringify(data)
-												};
-
-			fetch("http://localhost:3000/beans", configObj)
-				  .then(function(response) {
-				    return response.json();
-				  })
-				  .then(function(object) {
-				    console.log(object);
-				    $('new-bean-modal').foundation('close');
-				  })
-				  .catch(function(error) {
-				    alert("Something bad happened :(");
-				    console.log(error.message);
-				  });
-		});
-});
+		fetch("http://localhost:3000/beans", configObj)
+			  .then(function(response) {
+			    return response.json();
+			  })
+			  .then(function(object) {
+			    console.log(object);
+			    $('new-bean-modal').foundation('close');
+			  })
+			  .catch(function(error) {
+			    alert("Something bad happened :(");
+			    console.log(error.message);
+			  });
+	});
 
 function index(data, template){
   // compile it using Handlebars

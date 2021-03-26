@@ -1,7 +1,7 @@
 class BeansController < ApplicationController
 	def create
 		bean = Bean.new(bean_params)
-
+		
 		if bean.save
 			render json: BeanSerializer.new(bean).serializable_hash
 		else
