@@ -1,0 +1,2 @@
+class RoastLevel < ApplicationRecord
+end
