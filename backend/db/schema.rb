@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210326132441) do
+ActiveRecord::Schema.define(version: 20210326180914) do
 
   create_table "beans", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20210326132441) do
     t.integer "roast_level_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "notes"
   end
 
   create_table "roast_levels", force: :cascade do |t|
