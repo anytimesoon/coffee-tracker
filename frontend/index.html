@@ -18,9 +18,9 @@
     </div>
 
     <div class="grid-y grid-frame align-center-middle">
-      <div id="content" class="cell shrink">
-        <div class="grid-x align-center-middle">
-          <div class="cell shrink">
+      <div class="cell shrink">
+        <div class="grid-x align-center-middle ">
+          <div id="content" class="cell shrink">
             
           </div>
         </div>
@@ -29,6 +29,21 @@
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="index.js"></script>
+
+    <script id="roast-levels-index" type="text/x-handlebars-template">
+      <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell text-center">
+          <h1>Pick your roast level</h1>
+        </div>
+        {{#each all}}
+          <div class="cell medium-4">
+            <a href="#" id="{{ id }}" class="show-roast-level button large expanded">{{ attributes.name }}</a>
+          </div>
+        {{/each}}
+      </div>
+    </script>
   </body>
 </html>
 
