@@ -74,10 +74,19 @@ class RoastLevel{
 };
 
 document.addEventListener('DOMContentLoaded', function(){
+	// load data
 	fetch('http://localhost:3000')
 	    .then(function(response) {	return response.json();  })
 	    .then( function(json) {	const roastLevels = new RoastLevels(json);   })
 	    .catch(err => console.log('Request Failed', err));
+
+
+	// prevent default form action
+	document.getElementById("new-bean-form").addEventListener('submit', function(e){
+			e.preventDefault();
+
+			debugger;
+		});
 });
 
 function index(data, template){
