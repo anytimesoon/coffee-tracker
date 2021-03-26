@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+RoastLevel.create(name: 'Light')
+RoastLevel.create(name: 'Medium-Light')
+RoastLevel.create(name: 'Medium')
+RoastLevel.create(name: 'Medium-Dark')
+RoastLevel.create(name: 'Dark')
