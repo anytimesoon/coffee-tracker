@@ -6,12 +6,14 @@ class RoastLevels{
 		this.all = json.data;
 
 		this.index;
-	}
+	};
 
 	get index() {
 		index(this, this.template);
+
 		this.bindShowLinks;
-	}
+		this.populateFormSelect;
+	};
 
 	get bindShowLinks(){
 		const elements = document.getElementsByClassName("show-roast-level");
@@ -29,6 +31,17 @@ class RoastLevels{
 							    .catch(err => console.log('Request Failed', err));
 								    }, true);
 		};
+	};
+
+	get populateFormSelect() {
+		const formSelect = document.getElementById("bean-roast-level");
+
+		for (let i = 0; i < this.all.length; i++){
+			let opt = document.createElement('option');
+	    opt.value = this.all[i];
+	    opt.innerHTML = this.all[i].attributes.name;
+	    formSelect.appendChild(opt);
+		}
 	};
 }
 
@@ -49,7 +62,7 @@ class RoastLevel{
 document.addEventListener('DOMContentLoaded', function(){
 	fetch('http://localhost:3000')
 	    .then(function(response) {	return response.json();  })
-	    .then( function(json) {	new RoastLevels(json);   })
+	    .then( function(json) {	const roastLevels = new RoastLevels(json);   })
 	    .catch(err => console.log('Request Failed', err));
 });
 
