@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Do you get confused about how awesome your coffee beans are? I do. That's why I built this app. Now I can keep track of what I'm drinking and how it tasted and you can too! Here's how to get started:
 
-Things you may want to cover:
+# installation
 
-* Ruby version
+Install gems 
 
-* System dependencies
+``` bundle install ```
 
-* Configuration
+Start the server by going to the /backend directory and running:
 
-* Database creation
+``` rails s ```
 
-* Database initialization
+Open index.html in /frontend using your favourite browser, and you're away!
 
-* How to run the test suite
+Happy coffee drinking!
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
