@@ -9,6 +9,12 @@ class BeansController < ApplicationController
 		end
 	end
 
+	def show
+		bean = Bean.find(params[:id])
+
+		render json: BeanSerializer.new(bean).serializable_hash
+	end
+
 	private
 
 	def bean_params

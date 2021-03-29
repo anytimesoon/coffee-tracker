@@ -18,8 +18,6 @@ class RoastLevels{
 	get bindShowLinks(){
 		const elements = document.getElementsByClassName("show-roast-level");
 
-		const all = this.all;
-
 		for (let i = 0; i < elements.length; i++) {
 		    elements[i].addEventListener('click', function(e){
 					    	const id = this.getAttribute("id");
@@ -59,6 +57,7 @@ class RoastLevel{
 		index(this, this.template);
 		
 		this.autoSelect;
+		this.bindShowLinks;
 	};
 
 	get autoSelect() {
@@ -69,6 +68,22 @@ class RoastLevel{
 				options[i].selected = true;
 				break;
 			};
+		};
+	};
+
+	get bindShowLinks(){
+		const elements = document.getElementsByClassName("show-bean");
+
+		for (let i = 0; i < elements.length; i++) {
+		    elements[i].addEventListener('click', function(e){
+					    	const id = this.getAttribute("id");
+					    	e.preventDefault();
+			    	    
+					    	fetch('http://localhost:3000/beans/' + id)
+							    .then(function(response) {	return response.json();  })
+							    .then( function(json) {	new Bean(json);   })
+							    .catch(err => console.log('Request Failed', err));
+								    }, true);
 		};
 	};
 };

@@ -13,6 +13,7 @@
       <div class="title-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
           <li class="menu-text">Coffee Tracker</li>
+          <li class="menu-item"><a href="" id="home-button">Home</a></li>
         </ul>
       </div>
     </div>
@@ -74,7 +75,7 @@
         </div>
         {{#each all}}
           <div class="cell medium-4">
-            <a href="#" id="{{ id }}" class="show-roast-level button large expanded">{{ attributes.name }}</a>
+            <a href="" id="{{ id }}" class="show-roast-level button large expanded">{{ attributes.name }}</a>
           </div>
         {{/each}}
       </div>
@@ -90,7 +91,7 @@
         <div class="cell">
           <ul class="no-bullet">
             {{#each beans}}
-              <li><a href="localhost:3000/beans/{{ this.id }}" >{{ this.attributes.name }}</a></li>
+              <li><a href="" class="show-bean" id="{{ this.id }}">{{ this.attributes.name }}</a></li>
             {{/each}}
           </ul>
         </div>
