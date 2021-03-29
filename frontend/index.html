@@ -40,7 +40,7 @@
 
             <label> Tasting Notes: <input type="text" name="tasting_notes" id="bean-tasting-notes" /></label>
 
-            <label for="bean-roast-level">Score</label>
+            <label for="bean-score">Score</label>
             <select id="bean-score" name="bean-score">
               <option value="1">1 Star</option>
               <option value="2">2 Stars</option>
@@ -95,6 +95,21 @@
           </ul>
         </div>
        
+      </div>
+    </script>
+
+    <script id="show-bean" type="text/x-handlebars-template">
+      <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell text-center">
+          <h1>{{ name }}</h1>
+          <h3 class="subheader">{{ roastLevel }}</h3>
+
+          <em>{{ tastingNotes }}</em>
+        </div>
+        <div class="cell">
+          <p>{{ score }} Stars</p>
+          <p>{{ notes }}</p>
+        </div>
       </div>
     </script>
   </body>

@@ -48,11 +48,11 @@ class RoastLevels{
 class RoastLevel{
 	constructor(json){
 		this.template = document.querySelector("#show-roast-level").innerHTML;
-		this.name = json.data.attributes.name
-		this.id = json.data.id
-		this.beans = json.included
+		this.name = json.data.attributes.name;
+		this.id = json.data.id;
+		this.beans = json.included;
 
-		this.index
+		this.index;
 	};
 
 	get index() {
@@ -73,6 +73,24 @@ class RoastLevel{
 	};
 };
 
+class Bean{
+	constructor(json){
+		this.template = document.querySelector("#show-bean").innerHTML;
+		this.name = json.data.attributes.name;
+		this.roastLevel = json.data.attributes.roast_level;
+		this.tastingNotes = json.data.attributes.tasting_notes;
+		this.score = json.data.attributes.score;
+		this.notes = json.data.attributes.notes;
+		this.id = json.data.id;
+
+		this.index;
+	}
+
+	get index(){
+		index(this, this.template)
+	}
+}
+
 document.addEventListener('DOMContentLoaded', function(){
 	// load data
 	fetch('http://localhost:3000')
@@ -85,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function(){
 // prevent default form action
 document.getElementById("new-bean-form").addEventListener('submit', function(e){
 		e.preventDefault();
-		debugger;
+
 		const data = {  bean: 
 												   {  name: this[0].value,
 															roast_level_id: this[1].value,
@@ -109,12 +127,16 @@ document.getElementById("new-bean-form").addEventListener('submit', function(e){
 			    return response.json();
 			  })
 			  .then(function(object) {
-			    console.log(object);
-			    $('new-bean-modal').foundation('close');
+			    if ('error' in object) {
+				    alert(object.error)
+				  } else {
+				  	document.getElementById('new-bean-form').reset();
+				  	new Bean(object);
+				  	$('#new-bean-modal').foundation('close');
+				  }
 			  })
 			  .catch(function(error) {
-			    alert("Something bad happened :(");
-			    console.log(error.message);
+			    alert(error.message);
 			  });
 	});
 
