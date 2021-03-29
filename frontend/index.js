@@ -1,5 +1,7 @@
 $(document).foundation();
 
+let roastLevels = null;
+
 class RoastLevels{
 	constructor(json){
 		this.template = document.querySelector("#roast-levels-index").innerHTML;
@@ -110,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	// load data
 	fetch('http://localhost:3000')
 	    .then(function(response) {	return response.json();  })
-	    .then( function(json) {	const roastLevels = new RoastLevels(json);   })
+	    .then( function(json) {	roastLevels = new RoastLevels(json);   })
 	    .catch(err => console.log('Request Failed', err));
 });
 
@@ -154,6 +156,13 @@ document.getElementById("new-bean-form").addEventListener('submit', function(e){
 			    alert(error.message);
 			  });
 	});
+
+// home link
+document.getElementById('home-button').addEventListener('click', function(e){
+	e.preventDefault();
+	roastLevels.index;
+})
+
 
 function index(data, template){
   // compile it using Handlebars
