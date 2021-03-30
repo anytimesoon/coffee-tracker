@@ -36,6 +36,10 @@ class RoastLevels{
 	get populateFormSelect() {
 		const formSelect = document.getElementById("bean-roast-level");
 
+		for (let i = formSelect.length - 1; i >= 0; i--){
+			formSelect.remove(i);
+		}
+
 		for (let i = 0; i < this.all.length; i++){
 			let opt = document.createElement('option');
 	    opt.value = this.all[i].id;
