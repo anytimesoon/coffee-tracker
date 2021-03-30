@@ -103,14 +103,27 @@ class Bean{
 		this.score = json.data.attributes.score;
 		this.notes = json.data.attributes.notes;
 		this.id = json.data.id;
+		this.roastLevelId = json.data.relationships.roast_level.data.id
 
 		this.index;
-	}
+	};
 
 	get index(){
-		index(this, this.template)
-	}
-}
+		index(this, this.template);
+		this.autoSelect;
+	};
+
+	get autoSelect(){
+		const options = document.getElementById("bean-roast-level").options;
+
+    for (let i = 0; i < options.length; i++) {
+      if (this.roastLevelId === options[i].value ){
+        options[i].selected = true;
+                break;
+      };
+    };
+	};
+};
 
 document.addEventListener('DOMContentLoaded', function(){
 	// load data
