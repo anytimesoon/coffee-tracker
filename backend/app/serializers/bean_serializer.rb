@@ -1,6 +1,6 @@
 class BeanSerializer
   include JSONAPI::Serializer
-  attributes :name, :tasting_notes, :score
+  attributes :name, :tasting_notes, :score, :notes
 
   belongs_to :roast_level
 
